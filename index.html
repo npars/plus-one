@@ -26,11 +26,18 @@ layout: default
       <section id="main_content">
         {% for image in site.static_files %}
           {% if image.path contains 'gifs' %}
-            <img src="{{ site.github.url }}{{ image.path }}"/>
-            {% highlight markdown %}![:+1:]({{ site.github.url }}{{ image.path }} "+1"){% endhighlight %}
+            <a class="gif" data-clipboard-text='![:+1:]({{ site.github.url }}{{ image.path }} "+1")'>
+              <img src="{{ site.github.url }}{{ image.path }}"/>
+            </a>
           {% endif %}
         {% endfor %}
       </section>
+
+      <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+      <script>
+        var clipboard = new Clipboard('.gif');
+      </script>
     </div>
 
   </body>

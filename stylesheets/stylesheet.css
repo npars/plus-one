@@ -12,13 +12,15 @@ body {
 
 .container {
   width: 90%;
-  max-width: 600px;
   margin: 0 auto;
 }
 
 section {
-  display: block;
   margin: 0 0 20px 0;
+
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -238,4 +240,9 @@ a {
 
 .cf {
   zoom:1;
+}
+
+.gif {
+  margin: 5px 5px;
+  cursor: pointer;
 }
