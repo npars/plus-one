@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+cd "$(dirname "$BASH_SOURCE")"
 cd _orig
 for f in *.gif; do
     if [ ! -f ../gifs/"$f" ]; then
