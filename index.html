@@ -9,6 +9,8 @@ layout: default
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
@@ -29,24 +31,36 @@ layout: default
     <div class="container">
       <section id="main_content">
         {% for image in site.static_files %}
-          {% if image.path contains 'gifs' %}
+          {% if image.path contains 'gifs/' %}
+            {% assign gif_file = image.path | split:"/" | last %}
             <a class="gif"
                data-clipboard-text='![:+1:]({{ site.github.url }}{{ image.path }} "+1")'
-               onclick="toastr.success('Copied {{ image.path }} to clipboard!')">
-              <img src="{{ site.github.url }}{{ image.path }}"/>
+               onclick="toastr.success('Copied {{ gif_file }} to clipboard!')">
+              <img src="{{ site.github.url }}/static/{{ gif_file }}"/>
             </a>
           {% endif %}
         {% endfor %}
       </section>
 
       <!-- Clipboard.JS -->
-      <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.12/clipboard.min.js"></script>
+
+
       <script>
         var clipboard = new Clipboard('.gif');
-      </script>
 
-      <!-- toastr -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+        $(function() {
+          $(".gif").hover(
+                  function() {
+                    var image = $(this).find("img");
+                    image.attr("src", image.attr("src").replace(/static\//, "gifs/"));
+                  },
+                  function() {
+                    var image = $(this).find("img");
+                    image.attr("src", image.attr("src").replace(/gifs\//, "static/"));
+                  }
+          );
+        });
+      </script>
     </div>
 
   </body>
