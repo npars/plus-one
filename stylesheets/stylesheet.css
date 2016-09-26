@@ -25,14 +25,14 @@ section {
   margin: 0 0 20px 0;
 
   /* Prevent vertical gaps */
-  line-height: 0;
+  line-height: 2;
 
   -webkit-column-width: 200px;
-  -webkit-column-gap:   0px;
+  -webkit-column-gap:   8px;
   -moz-column-width:    200px;
-  -moz-column-gap:      0px;
+  -moz-column-gap:      8px;
   column-width:         200px;
-  column-gap:           0px;
+  column-gap:           8px;
 }
 
 h1, h2, h3, h4, h5, h6 {
