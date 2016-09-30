@@ -33,6 +33,8 @@ layout: default
         {% for image in site.static_files %}
           {% if image.path contains 'gifs/' %}
             {% assign gif_file = image.path | split:"/" | last %}
+            {% assign gif_name = gif_file | split:"." | first %}
+            <p>{{gif_name}}</p>
             <a class="gif"
                data-clipboard-text='![:+1:]({{ site.github.url }}{{ image.path }} "+1")'
                onclick="toastr.success('Copied {{ gif_file }} to clipboard!')">
