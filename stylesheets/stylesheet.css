@@ -21,6 +21,12 @@ body {
   cursor: pointer;
 }
 
+.gif-wrapper {
+  border: medium solid gray;
+  border-collapse: collapse;
+  page-break-inside: avoid;
+}
+
 section {
   margin: 0 0 20px 0;
 
