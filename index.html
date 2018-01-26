@@ -24,7 +24,10 @@ layout: default
 
     <header>
       <div class="container">
-        <h1>👍</h1>
+        <span>
+          <h1>👍</h1>
+          <input id='search' type='text' placeholder='Search gifs' autofocus oninput="onSearch()">
+        </span>
       </div>
     </header>
 
@@ -35,6 +38,7 @@ layout: default
             {% assign gif_file = image.path | split:"/" | last %}
             <a class="gif"
                data-clipboard-text='![:+1:]({{ site.github.url }}{{ image.path }} "+1")'
+               data-search-text="{{ gif_file | downcase }}"
                onclick="toastr.success('Copied {{ gif_file }} to clipboard!')">
               <img src="{{ site.github.url }}/static/{{ gif_file }}"/>
             </a>
@@ -60,6 +64,15 @@ layout: default
                   }
           );
         });
+
+        function onSearch() {
+          var search = document.getElementById('search').value.toLowerCase();
+
+          for (var gif of document.getElementsByClassName('gif')) {
+            gif.style.display = gif.getAttribute('data-search-text').includes(search) ? 'inline' : 'none';
+          }
+        }
+
       </script>
     </div>
 
