@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: null
 ---
 
 <!DOCTYPE html>
@@ -13,7 +13,6 @@ layout: default
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
     <title>👍</title>
@@ -24,10 +23,8 @@ layout: default
 
     <header>
       <div class="container">
-        <span>
           <h1>👍</h1>
           <input id='search' type='text' placeholder='Search gifs' autofocus oninput="onSearch()">
-        </span>
       </div>
     </header>
 
@@ -46,11 +43,8 @@ layout: default
         {% endfor %}
       </section>
 
-      <!-- Clipboard.JS -->
-
-
       <script>
-        var clipboard = new Clipboard('.gif');
+        new Clipboard('.gif');
 
         $(function() {
           $(".gif").hover(
@@ -75,6 +69,5 @@ layout: default
 
       </script>
     </div>
-
   </body>
 </html>
