@@ -19,6 +19,7 @@ function exit_with_msg
 
 # Ensure availability of wget
 type wget > /dev/null 2> /dev/null || exit_with_msg 2 "Script requires wget"
+type gifsicle > /dev/null 2> /dev/null || exit_with_msg 2 "Script requires gifsicle"
 
 # Ensure NAME is correctly formed
 [[ $NAME =~ $NAME_PATTERN ]] || exit_with_msg 3 "The name \"$NAME\" must match the regex \"$NAME_PATTERN\""
